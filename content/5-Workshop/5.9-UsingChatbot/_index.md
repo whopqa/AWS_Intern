@@ -8,13 +8,15 @@ pre : " <b> 5.9. </b> "
 
 ## Using the Chatbot
 
-The MeetAssist chatbot is accessible through Facebook Messenger and provides a conversational interface for booking appointments with consultants.
+The MeetAssist chatbot can be accessed via Facebook Messenger and provides a conversational interface for booking appointments with consultants.
 
 ### Getting Started
 
 1. Open Facebook Messenger and search for your connected page
 2. Click the **Get Started** button
-3. The chatbot will greet you and prompt for authentication
+3. The chatbot will greet you and request authentication
+
+![Live Mode](/images/5-Workshop/5.7-SetupMessengerBot/20.png)
 
 ### Authentication Flow
 
@@ -22,16 +24,17 @@ Before using the chatbot, you need to authenticate:
 
 1. **Email Verification**: Enter your registered email address
 2. **OTP Request**: The bot will send a One-Time Password to your email
-3. **Enter OTP**: Input the 6-digit code from your email
-4. **Session Active**: Your session is valid for 24 hours
+3. **Enter OTP**: Enter the 6-digit code from your email (check spam folder)
+4. **Active Session**: Your session is valid for 24 hours
 
+![Live Mode](/images/5-Workshop/5.7-SetupMessengerBot/21.png)
 {{% notice warning %}}
 If your AWS SES is in **sandbox mode**, you can only send emails to verified addresses. For production use, request SES production access.
 {{% /notice %}}
 
 ### Booking an Appointment
 
-The chatbot uses natural language understanding powered by Amazon Bedrock. You can book appointments using conversational Vietnamese:
+The chatbot uses natural language understanding capabilities powered by Amazon Bedrock. You can book appointments using conversational Vietnamese:
 
 **Example conversations:**
 - "Tôi muốn đặt lịch với tư vấn viên Nguyễn Văn A vào thứ 2 tuần sau lúc 10 giờ sáng"
@@ -39,19 +42,19 @@ The chatbot uses natural language understanding powered by Amazon Bedrock. You c
 - "Đặt lịch gặp chuyên gia Trần Thị B ngày mai buổi chiều"
 
 The chatbot will:
-1. Extract appointment details (consultant, date, time)
-2. Check consultant availability
+1. Extract appointment information (consultant, date, time)
+2. Check the consultant's available schedule
 3. Confirm the booking with you
 4. Create the appointment in the system
 
 ### Updating an Appointment
 
-To modify an existing appointment:
+To edit an existing appointment:
 - "Tôi muốn đổi lịch hẹn sang thứ 4"
 - "Change my appointment to 3pm"
 - "Reschedule my meeting with consultant A"
 
-The chatbot will show your current appointments and guide you through the update process.
+The chatbot will display your current appointments and guide you through the update process.
 
 ### Canceling an Appointment
 
@@ -60,7 +63,7 @@ To cancel an appointment:
 - "Cancel my appointment"
 - "I want to cancel my meeting"
 
-The bot will list your active appointments and ask for confirmation before canceling.
+The bot will list your active appointments and request confirmation before canceling.
 
 ### General Queries
 
@@ -71,7 +74,7 @@ Ask the chatbot about:
 - "Who are the available consultants?"
 - "Tell me about consultant Nguyễn Văn A"
 
-**Available Slots:**
+**Available Schedule:**
 - "Tư vấn viên A có lịch trống khi nào?"
 - "Show me available slots for next week"
 - "When is consultant B free?"
@@ -90,8 +93,8 @@ If you want to cancel the current conversation flow:
 ### Session Management
 
 - Sessions expire after **24 hours**
-- You'll need to re-authenticate with email + OTP
-- Your conversation history is maintained during the session
+- You will need to re-authenticate with email + OTP
+- Your conversation history is maintained throughout the session
 
 ### Troubleshooting
 
@@ -100,10 +103,10 @@ If you want to cancel the current conversation flow:
 - Verify the API Gateway URL in webhook settings
 - Check Lambda logs in CloudWatch
 
-**Issue: OTP not received**
+**Issue: Not receiving OTP**
 - Verify your email is correct
 - Check spam/junk folder
-- If in SES sandbox, ensure email is verified in SES Console
+- If in SES sandbox mode, ensure the email is verified in SES Console
 
 **Issue: Appointment booking fails**
 - Ensure the consultant exists in the database

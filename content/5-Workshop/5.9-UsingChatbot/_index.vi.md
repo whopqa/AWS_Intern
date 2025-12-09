@@ -16,22 +16,24 @@ Chatbot MeetAssist có thể truy cập qua Facebook Messenger và cung cấp gi
 2. Nhấp vào nút **Get Started**
 3. Chatbot sẽ chào hỏi và yêu cầu xác thực
 
+![Live Mode](/images/5-Workshop/5.7-SetupMessengerBot/20.png)
+
 ### Luồng Xác thực
 
 Trước khi sử dụng chatbot, bạn cần xác thực:
 
 1. **Xác minh Email**: Nhập địa chỉ email đã đăng ký của bạn
 2. **Yêu cầu OTP**: Bot sẽ gửi mã One-Time Password đến email của bạn
-3. **Nhập OTP**: Nhập mã 6 chữ số từ email của bạn
+3. **Nhập OTP**: Nhập mã 6 chữ số từ email của bạn (kiểm tra trong phần spam)
 4. **Phiên Hoạt động**: Phiên của bạn có hiệu lực trong 24 giờ
-
+![Live Mode](/images/5-Workshop/5.7-SetupMessengerBot/21.png)
 {{% notice warning %}}
 Nếu AWS SES của bạn đang ở **chế độ sandbox**, bạn chỉ có thể gửi email đến các địa chỉ đã xác minh. Để sử dụng production, hãy yêu cầu quyền truy cập SES production.
 {{% /notice %}}
 
 ### Đặt Lịch Hẹn
 
-Chatbot sử dụng hiểu ngôn ngữ tự nhiên được hỗ trợ bởi Amazon Bedrock. Bạn có thể đặt lịch hẹn bằng tiếng Việt đàm thoại:
+Chatbot sử dụng khả năng hiểu ngôn ngữ tự nhiên được hỗ trợ bởi Amazon Bedrock. Bạn có thể đặt lịch hẹn bằng tiếng Việt đàm thoại:
 
 **Ví dụ hội thoại:**
 - "Tôi muốn đặt lịch với tư vấn viên Nguyễn Văn A vào thứ 2 tuần sau lúc 10 giờ sáng"
@@ -81,7 +83,7 @@ Hỏi chatbot về:
 - "My appointments"
 - "Show my upcoming meetings"
 
-### Hủy Bỏ Thao tác
+### Hủy Bỏ Thao Tác
 
 Nếu bạn muốn hủy luồng hội thoại hiện tại:
 - Gõ "abort" hoặc "hủy" bất cứ lúc nào
