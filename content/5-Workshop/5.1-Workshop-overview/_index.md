@@ -39,7 +39,7 @@ The system is designed using an **Event-Driven Serverless** model combined with 
 
 5. **Admin Dashboard & Consultant Portal:** A management interface (ReactJS) hosted on Amazon S3 and delivered through CloudFront, allowing administrators to view statistics and manage appointments. Consultant Portal provides the ability to manage booked appointments with customers and view personal schedules.
 
-![Architecture Diagram](/images/2-Proposal/chatbot_final_final_final.drawio.png)
+![Architecture Diagram](/images/2-Proposal/chatbot.jpg)
 *(The image illustrates the overall architecture from the Proposal)*
 
 
