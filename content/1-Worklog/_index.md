@@ -30,6 +30,6 @@ This worklog documents my 13-week journey during the AWS internship program, cov
 
 **Week 11:** [Deploying Webhook Stack, OTP authentication via SES and session management](1.11-week11/)
 
-**Week 12:** [Chatbot system restructuring and appointment scheduling flow development](1.12-week12/)
+**Week 12:** [Chatbot system restructuring and appointment scheduling flow development.](1.12-week12/)
 
 **Week 13:** [Finalizing appointment scheduling flow, handling throttling, optimizing prompts and submiting project](1.13-week13/)
