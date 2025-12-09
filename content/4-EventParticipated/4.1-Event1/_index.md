@@ -1,126 +1,110 @@
 ---
 title: "Event 1"
-date: "`r Sys.Date()`"
+date: "2025-09-09"
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Key Takeaways from "AWS Cloud Mastery Series #1 - AI/ML/GenAI on AWS"
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Event Overview
 
-### Event Objectives
-
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+This session provided an in-depth exploration of AWS's AI/ML/GenAI ecosystem and practical approaches to implementing these technologies in production environments. The event brought together cloud practitioners, AI enthusiasts, and industry experts to share insights on leveraging AWS's comprehensive AI portfolio for building next-generation intelligent applications.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Lam Tuan Kiet** – Sr DevOps Engineer, FPT Software  
+- **Danh Hoang Hieu Nghi** – AI Engineer, Renova Cloud  
+- **Dinh Le Hoang Anh** – Cloud Engineer Trainee, First Cloud AI Journey  
+- **Van Hoang Kha** – Community Builder
 
-### Key Highlights
+### Main Topics Covered
 
-#### Identifying the drawbacks of legacy application architecture
+## 1. Building with Amazon Bedrock's Generative AI Platform
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+**Understanding Foundation Models:**  
+Amazon Bedrock provides access to pre-trained foundation models from leading AI companies like Anthropic, OpenAI, and Meta. These models can be fine-tuned for specific use cases without requiring extensive training infrastructure. This democratizes AI development by eliminating the need for specialized ML expertise and expensive GPU resources, allowing teams to focus on solving business problems rather than managing infrastructure.
 
-#### Transitioning to modern application architecture – Microservices
+**Effective Prompt Engineering Approaches:**  
+Different prompting methods can significantly impact model performance:
+  + **Zero-shot prompting:** Direct task instruction without examples, suitable for straightforward queries.  
+  + **Few-shot prompting:** Including sample inputs and outputs to guide model behavior.  
+  + **Chain-of-Thought prompting:** Requesting step-by-step reasoning to improve complex problem-solving accuracy.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+**Retrieval Augmented Generation (RAG) Architecture:**  
+RAG enhances AI responses by combining model capabilities with external knowledge bases, addressing the challenge of hallucinations and keeping AI systems up-to-date with current information:
+  + **Retrieval phase:** Searches relevant information from document repositories using vector similarity.  
+  + **Augmentation phase:** Enriches the prompt with retrieved context, providing grounding for the model.  
+  + **Generation phase:** Produces informed, accurate responses based on both model knowledge and external data.  
+  + **Use cases:** Intelligent chatbots, semantic search systems, automated content summarization, and domain-specific question answering.  
+  + **Benefits:** Reduces hallucinations, enables real-time knowledge updates without retraining, and provides source attribution for transparency.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+**Amazon Titan Embeddings:**  
+This specialized model converts text into numerical vector representations (embeddings), enabling semantic similarity matching and powering RAG implementations with multilingual capabilities. Unlike traditional keyword matching, embeddings capture the semantic meaning of text, allowing systems to find conceptually similar content even when exact words don't match. This is particularly valuable for cross-lingual applications and understanding user intent.
 
-#### Domain-Driven Design (DDD)
+**Pre-built AWS AI Services:** Production-ready APIs for common AI tasks:
+  - Rekognition – Visual content analysis  
+  - Translate – Multi-language translation  
+  - Textract – Intelligent document processing  
+  - Transcribe – Audio transcription  
+  - Polly – Voice synthesis  
+  - Comprehend – Text analysis and NLP  
+  - Kendra – Enterprise search  
+  - Lookout – Anomaly detection  
+  - Personalize – Personalized recommendations  
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+**Live Demonstration:**  
+The AMZPhoto application showcased practical facial recognition implementation using AWS AI services. This hands-on demo illustrated how to integrate multiple AWS services (Rekognition, S3, Lambda) into a cohesive application, demonstrating real-world architecture patterns and best practices for building production-ready AI solutions.
 
-#### Event-Driven Architecture
+---
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
 
-#### Compute Evolution
+## 2. Scaling AI Agents with Amazon Bedrock AgentCore
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+AgentCore provides enterprise-grade infrastructure for deploying autonomous AI agents that can perform complex, multi-step tasks:
+  - Secure workflow execution and scaling capabilities with automatic load balancing  
+  - Persistent memory management for stateful interactions across sessions  
+  - Granular access control and security policies ensuring compliance with enterprise requirements  
+  - Built-in integrations: Browser Tool, Code Interpreter, Memory Store, and custom function calling  
+  - Comprehensive monitoring and audit trails for debugging and governance  
+  - Compatibility with major frameworks: CrewAI, LangGraph, LlamaIndex, OpenAI Agents SDK  
+  - Support for multi-agent collaboration and orchestration patterns
 
-#### Amazon Q Developer
+---
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+### Key Learning Points
 
-### Key Takeaways
+- **Centralized AI development with Bedrock:** Single platform for accessing diverse foundation models simplifies development and reduces vendor lock-in risks.  
+- **Combining prompts and RAG:** These techniques are essential for building context-aware AI applications that can handle domain-specific knowledge.  
+- **Vector embeddings enable semantic understanding:** Titan Embeddings improve search relevance and information retrieval beyond simple keyword matching.  
+- **Leverage managed services:** AWS's pre-built AI tools significantly reduce time-to-market and operational overhead.  
+- **AgentCore for production agents:** Handles operational complexity including scaling, security, and observability, allowing teams to focus on agent logic.  
+- **Cost optimization strategies:** Understanding pricing models and implementing caching strategies can significantly reduce AI inference costs.  
+- **Security and compliance:** AWS's AI services are designed with enterprise security requirements in mind, including data privacy and regional compliance.
 
-#### Design Mindset
+---
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+### Real-World Applications
 
-#### Technical Architecture
+- The RAG architecture and AgentCore framework are directly applicable to our planned GenAI initiatives, providing a blueprint for implementation. We can leverage these patterns for building internal knowledge assistants and customer-facing chatbots.
+- Deep familiarity with AWS AI service portfolio enables better architectural decisions and faster prototyping. Understanding service capabilities helps in selecting the right tool for each use case.
+- Prompt engineering techniques can immediately improve our AI-powered feature quality and reliability, reducing the need for extensive fine-tuning.
+- The embedding-based search approach can enhance our existing search functionality, improving user experience and content discovery.
+- Multi-agent patterns demonstrated with AgentCore can be applied to automate complex workflows that currently require manual intervention.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+### Personal Event Highlights
 
-#### Modernization Strategy
+The **"GenAI-powered App-DB Modernization"** workshop was an enriching learning experience, demonstrating practical strategies for modernizing legacy systems with cutting-edge AI and database technologies. The hands-on format encouraged active participation and knowledge sharing among attendees. Notable moments included:
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- Achieving top 5 in the closing Kahoot competition and meeting the speakers for photos, providing an opportunity to discuss implementation challenges and best practices.
+- Forming team **"Mèo Cam Đeo Khăn"** (Orange Cat with Scarf) by merging talent from "The Ballers" and "Vinhomies" groups, fostering collaboration and networking.
+- Engaging in technical discussions with fellow participants about real-world AI implementation challenges and solutions.
+- Gaining valuable connections within the AWS community that will facilitate future knowledge exchange and collaboration opportunities.
 
-### Applying to Work
+#### Event Gallery
+![Event 1 - Photo 1](/images/4-EventParticipated/event1-1.jpg)
+![Event 1 - Photo 2](/images/4-EventParticipated/event1-2.jpg)
+![Event 1 - Photo 3](/images/4-EventParticipated/event1-3.jpg)
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
 
-### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.

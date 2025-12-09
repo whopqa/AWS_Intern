@@ -1,59 +1,61 @@
----
+﻿---
 title: "Worklog Tuần 1"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
-
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Làm quen với các thành viên trong chương trình First Cloud Journey (FCJ) và nắm được nội quy, quy định tại đơn vị thực tập.
+* Hiểu khái niệm cơ bản về điện toán đám mây và hệ sinh thái dịch vụ AWS (Compute, Storage, Networking, Database, Security…).
+* Thực hành khởi tạo và quản lý tài khoản AWS Free Tier theo best practice: IAM User, Group, Role; hạn chế dùng root account; thiết lập Budget theo dõi chi phí.
+* Làm quen AWS Management Console và AWS CLI để thao tác với tài nguyên, đồng thời làm quen với scripting để tự động hóa.
+* Nắm cơ chế tối ưu hóa chi phí: Spot Instance, AWS Pricing Calculator, Budget/Cost Budget.
+* Làm quen khái niệm Serverless và công cụ Hugo để triển khai workshop/web tĩnh.
+* Hiểu và thực hành cơ bản về Networking trong AWS: VPC, Subnet, Route Table, Security Group, ...
+* Hiểu các khái niệm Networking cơ bản: CIDR, IP Address, Port, Protocol…
+* Nắm được kiến thức về VPC Security, VPN, Direct Connect, Load Balancer…
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc                                                                                                                                                                                                                             | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                 |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------------- |
+| 2   | - Hoàn thành nội dung lý thuyết Module 1.  <br> - Học làm workshop bằng Hugo: <br>&emsp; + Tải và setup Hugo <br>&emsp; + Cách làm worklog hàng tuần                                                                                 | 8/9/2025     | 8/9/2025        | https://docs.google.com/document/d/1JZToMXWvLJIXTGNp9DsKd4pIGdcC0hMC5t42Uazb1vg/edit?usp=sharing       |
+| 3   | - Học kiến thức nền tảng về mạng máy tính: <br>&emsp; + CIDR <br>&emsp; + IP Address <br>&emsp; + Port Number <br>&emsp; + Protocol                                                                                                   | 9/9/2025     | 9/9/2025        | Tài liệu mạng + AWS Academy                     |
+| 4   | - Hoàn thành các lab 1, 7, 9 của Module 1: Tổng quan AWS, hạ tầng AWS, chính sách AWS, AWS Services, tối ưu hóa chi phí bằng Budget.                                                                                                  | 10/9/2025    | 10/9/2025       |https://docs.google.com/document/d/1JZToMXWvLJIXTGNp9DsKd4pIGdcC0hMC5t42Uazb1vg/edit?usp=sharing      |
+| 5   | - Tìm hiểu các khái niệm VPC cơ bản: <br>&emsp; + VPC <br>&emsp; + Security Group <br>&emsp; + NACL <br>&emsp; + VPC Flow Logs <br>&emsp; + VPC Peering <br>&emsp; + Transit Gateway <br>&emsp; + VPC Endpoint                         | 11/9/2025    | 11/9/2025       | https://docs.google.com/document/d/1JZToMXWvLJIXTGNp9DsKd4pIGdcC0hMC5t42Uazb1vg/edit?usp=sharing                    |
+| 6   | - Các kiến thức kết nối On-premise → AWS: <br>&emsp; + Site-to-Site VPN <br>&emsp; + Client VPN <br>&emsp; + AWS Direct Connect <br> - Tìm hiểu Elastic Load Balancing và cơ chế phân phối tải                                       | 12/9/2025    | 12/9/2025       |https://docs.google.com/document/d/1JZToMXWvLJIXTGNp9DsKd4pIGdcC0hMC5t42Uazb1vg/edit?usp=sharing                      |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thành lý thuyết Module 1 và hiểu rõ:
+  * Mô hình Cloud Computing
+  * Các nhóm dịch vụ AWS: Compute, Storage, Networking, Database…
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Làm quen với Hugo:
+  * Tải và cài đặt Hugo thành công
+  * Tạo và quản lý worklog hàng tuần bằng Hugo
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nắm chắc kiến thức mạng cơ bản:
+  * CIDR, IP Address
+  * Port number, Protocol
+  * Cách phân chia mạng & cách hoạt động của địa chỉ IP
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hoàn thành các lab AWS Module 1:
+  * Kiến trúc AWS Global Infrastructure
+  * AWS Services và chính sách bảo mật
+  * Tối ưu chi phí với AWS Budget & contact support
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Hiểu cơ bản về VPC:
+  * Security Group (bảo mật cấp instance)
+  * NACL (bảo mật cấp subnet)
+  * Flow Logs, Peering, Endpoint, Transit Gateway
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Hiểu mô hình kết nối giữa on-premise và AWS:
+  * Site-to-Site VPN
+  * Client VPN
+  * Direct Connect
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Hiểu Elastic Load Balancing và cơ chế phân phối tải.
 
-
+* Đạt nền tảng kiến thức tốt để chuẩn bị cho tuần tiếp theo về EC2, CLI, Networking nâng cao.

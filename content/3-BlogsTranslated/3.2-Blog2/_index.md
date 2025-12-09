@@ -1,126 +1,127 @@
 ---
 title: "Blog 2"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Increase engagement with localized content using Amazon Bedrock Flows
+by Benjamin Le and Emilio Garcia Montano | on 01 MAY 2025 | in [Amazon Bedrock](https://aws.amazon.com/blogs/media/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/), [Amazon Bedrock Knowledge Bases](https://aws.amazon.com/blogs/media/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-knowledge-bases/), [Amazon Bedrock Prompt Management](https://aws.amazon.com/blogs/media/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-prompt-management/), [Amazon Machine Learning](https://aws.amazon.com/blogs/media/category/artificial-intelligence/amazon-machine-learning/), [Amazon Nova](https://aws.amazon.com/blogs/media/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-nova/), [Amazon Simple Storage Service (S3)](https://aws.amazon.com/blogs/media/category/storage/amazon-simple-storage-services-s3/), [Artificial Intelligence](https://aws.amazon.com/blogs/media/category/artificial-intelligence/), [Content Production](https://aws.amazon.com/blogs/media/category/industries/entertainment/content-production/), [Data Science & Analytics for Media](https://aws.amazon.com/blogs/media/category/industries/entertainment/data-science/), [Industries](https://aws.amazon.com/blogs/media/category/industries/), [Media & Entertainment](https://aws.amazon.com/blogs/media/category/industries/entertainment/), [Storage](https://aws.amazon.com/blogs/media/category/storage/) | [Permalink](https://aws.amazon.com/blogs/media/increase-engagement-with-localized-content-using-amazon-bedrock-flows/) | [Share](https://aws.amazon.com/blogs/media/increase-engagement-with-localized-content-using-amazon-bedrock-flows/)
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Content creators and publishers often maintain large collections with thousands, if not hundreds of thousands, of articles that can be localized for new audiences and geographies to deliver higher engagement in emerging and newly targeted markets. Localization is generally the process of transforming content (vocabulary choice, tone adjustments, and translation) for a new audience from one geography to another.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Human-driven localization cannot scale to the necessary volume, so machine translation is commonly used. However, automated localization still struggles with quality—particularly in contextualizing content to capture the nuances of each specific market. This often results in lower engagement rates compared to the original content. With foundation models supporting a wide range of languages and dialects, media and entertainment customers are increasingly using generative AI to deliver higher-quality localized content.
 
----
+[Amazon Bedrock Flows](https://aws.amazon.com/bedrock/flows/) provides a no-code visual builder and a set of APIs to seamlessly connect leading state-of-the-art foundation models (such as [Anthropic’s Claude](https://aws.amazon.com/bedrock/claude/) and [Amazon Nova](https://aws.amazon.com/ai/generative-ai/nova/)) within [Amazon Bedrock](https://aws.amazon.com/bedrock/). It also integrates with other AWS services to automate user-defined generative AI workflows that go far beyond sending a prompt to a large language model.
 
-## Architecture Guidance
+[Amazon Bedrock Prompt Management](https://aws.amazon.com/bedrock/prompt-management/) provides a streamlined interface to create, evaluate, version, and share prompts. It helps developers and prompt engineers achieve the best responses from foundation models for their use cases.
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+In this post, we demonstrate how you can leverage Amazon Bedrock capabilities (such as Flows, Prompt Management, and various foundation models) to quickly build and test a workflow. This workflow takes existing content, produces localized copies, and provides an evaluation of the differences for editor review.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+## Scenario overview
+As an online publisher looking to expand readership across new geographies and channels—without relying solely on new local content—you want to create a workflow that:
 
-**The solution architecture is now as follows:**
+1. Localizes existing text content for a specific country and language to better align with local markets and advertising strategies.
+2. Adapts content to new and emerging channels (such as short-form social media) using style guides currently stored in [Amazon Bedrock Knowledge Bases](https://aws.amazon.com/bedrock/knowledge-bases/) to help editors review their work.
+3. Provides evaluation metrics (such as factual accuracy, length, dialect, and overall change in meaning) so editors can make informed decisions to publish or refine content further.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+![Figure 1: High-level architecture diagram outlining a content management system using Amazon Bedrock Flows and Amazon Bedrock Knowledge Bases to localize content and provide evaluations for editor review.](/images/3-BlogsTranslated/3.2-Blog2/1.png)
+*Figure 1: High-level architecture diagram outlining a content management system using Amazon Bedrock Flows and Amazon Bedrock Knowledge Bases to localize content and provide evaluations for editor review.*
 
----
+## Prerequisites
+Before creating the flow and prompts, ensure you have the following setup:
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+- An AWS account and an IAM user or role authorized to use Amazon Bedrock. Refer to: [Getting started with Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html). Ensure the role includes permissions for Flows and Prompt Management as explained in the prerequisites for [Amazon Bedrock Flows](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-prereq.html) and [Prompt Management](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-prereq.html).
+- Access to the models you plan to invoke and evaluate. See: [Manage access to Amazon Bedrock foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html).
+  - Our example uses Amazon Nova Pro, [Cohere Command R, Cohere Embed Multilingual v3](https://aws.amazon.com/bedrock/cohere/), and Anthropic’s Claude 3.7 Sonnet in the Oregon Region (us-west-2).
+- An [Amazon Bedrock Knowledge Base](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html) configured with an [Amazon S3 data source](https://docs.aws.amazon.com/bedrock/latest/userguide/s3-data-source-connector.html).
+  - In our example, the knowledge base contains style guides for creating social media content.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+## Creating the prompts
+Before building the flow, create two prompts that will be used in the later prompt flow.
 
----
+The first prompt performs content localization, and we use the Anthropic Claude 3.7 Sonnet foundation model, which supports languages such as English, French, Spanish, Portuguese, Japanese, and others.
 
-## Technology Choices and Communication Scope
+When designing prompts, variables such as the article text are represented by `{{article}}`, and the target language is represented by `{{language}}`, allowing values to be shared across flow nodes for greater flexibility.
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+![Figure 2: Content Localization prompt](/images/3-BlogsTranslated/3.2-Blog2/2.png)
+*Figure 2: Content Localization prompt*
 
----
+The second prompt evaluates the original content and the localized content to provide an assessment for editors. To remain independent from the localization prompt, this evaluation prompt uses Amazon Nova Pro—a powerful multimodal model that provides the best combination of accuracy, speed, and cost across more than 200 languages.
 
-## The Pub/Sub Hub
+![Figure 3: Content Evaluation prompt](/images/3-BlogsTranslated/3.2-Blog2/3.png)
+*Figure 3: Content Evaluation prompt*
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+## Creating and configuring the flow
+Using the Amazon Bedrock console, navigate to **Flows** under Builder Tools and create a new flow as shown in Figure 4.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+![Figure 4: Amazon Bedrock Flow named "Content Localization" showing name, description, creation date, IAM role, and flow ID.](/images/3-BlogsTranslated/3.2-Blog2/4.png)
+*Figure 4: Amazon Bedrock Flow named "Content Localization"*
 
----
+After creation, the console will automatically open the flow builder. Otherwise, select **Edit in flow builder**.
 
-## Core Microservice
+Inside the Flow Builder, you can choose from multiple [node types](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html). Drag nodes onto the canvas and link them after defining variables or loading saved prompts.
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+In this example, the flow is shown in Figure 5.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+![Figure 5: Content localization flow.](/images/3-BlogsTranslated/3.2-Blog2/5.png) 
+*Figure 5: Content localization flow*
 
----
+Details for each node:
 
-## Front Door Microservice
+1. **Input node** simulates content coming from a CMS and accepts a JSON object with:
+   - `article`: selected article text  
+   - `country`: target country  
+   - `language`: target language  
+   - `query`: text prompt to query the knowledge base for relevant style guides  
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+2. **Get_Style_Guides node** uses Cohere Command R to interpret the query and retrieve results from the knowledge base. These results supplement localized content generation.
 
----
+3. **Localization Prompt node** uses the earlier prompt to localize the article.
 
-## Staging ER7 Microservice
+4. **Evaluation Prompt node** evaluates the original and localized texts using the evaluation prompt.
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+5. **Two Output nodes** emit data produced by the respective prompt nodes.
 
----
+LLMs can generate hallucinations. Amazon Bedrock Flows integrates with [Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-guardrails.html) so you can configure safeguards to detect or block undesired responses.
 
-## New Features in the Solution
+## Testing the flow
+Using the **Test flow** panel, you can quickly test the workflow with near real-time node outputs.
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+To illustrate how generative AI can adapt Spanish content across Europe and Latin America, the following examples use the same input text but change the target country.
+
+![Figure 6: Example inputs.](/images/3-BlogsTranslated/3.2-Blog2/6.png)
+*Figure 6: Example inputs*
+
+![Figure 7: Sample localized text.](/images/3-BlogsTranslated/3.2-Blog2/7.png)
+*Figure 7: Sample localized text*
+
+Finally, the evaluation step uses a separate foundation model to independently compare original and localized content and produce a scored assessment.
+
+![Figure 8: Example content evaluation.](/images/3-BlogsTranslated/3.2-Blog2/8.png)
+*Figure 8: Example content evaluation*
+
+## Pricing
+Amazon Bedrock Flows charges per 1,000 transitions within your workflow. A transition occurs whenever data moves from one node to another (for example, from an input node to a prompt node). There is no additional charge for using Amazon Bedrock Prompt Management.
+
+Model usage pricing depends on the model type and the number of input/output tokens. This example also uses Amazon Bedrock Knowledge Bases configured with an Amazon OpenSearch Serverless vector database and Amazon S3 as the data source.
+
+Pricing varies by AWS Region. All resources in this walkthrough are configured in Oregon (us-west-2). Refer to pricing pages for [Amazon Bedrock](https://aws.amazon.com/bedrock/pricing/), [Amazon S3](https://aws.amazon.com/s3/pricing/), and [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/serverless-vector-database/).
+
+## Conclusion
+We have demonstrated how media and entertainment customers can build a localized content workflow using a serverless, low-code architecture. Using Amazon Bedrock Flows and Prompt Management, content owners and editors can leverage generative AI to deliver more engaging content to new audiences.
+
+Contact an [AWS Representative](https://pages.awscloud.com/Media-and-Entertainment-Contact-Us.html) to learn how we can help accelerate your business.
+
+## Further reading
+
+- Amazon Bedrock Flows User Guide:  
+  [Build an end-to-end generative AI workflow with Amazon Bedrock Flows](https://docs.aws.amazon.com/bedrock/latest/userguide/flows.html)
+
+- Amazon Bedrock Prompt Management User Guide:  
+  [Construct and store reusable prompts with Prompt Management in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html)
+
+- [Amazon Bedrock Flows is now generally available with enhanced safety and traceability](https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-flows-is-now-generally-available-with-enhanced-safety-and-traceability/)
+
+- [Evaluating prompts at scale with Prompt Management and Prompt Flows for Amazon Bedrock](https://aws.amazon.com/blogs/machine-learning/evaluating-prompts-at-scale-with-prompt-management-and-prompt-flows-for-amazon-bedrock/)

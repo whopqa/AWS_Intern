@@ -1,57 +1,56 @@
 ---
 title: "Week 6 Worklog"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Complete all theory content in Module 6 (Database Concepts, RDS/Aurora, Redshift, ElastiCache).
+* Research AI chatbot architecture on AWS.
+* Install and use Amazon Q CLI.
+* Attend the “Data Science on AWS” workshop.
+* Start drafting cloud architectures using Amazon Q CLI.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Tasks to carry out this week:
+
+| Day | Tasks | Start Date | Completion Date | References Meterial |
+| --- | ------ | ----------- | ---------------- | ----------- |
+| 2 | **Complete Module 6 theory** <br> - Redshift: Data warehouse, OLAP, MPP, columnar storage <br> - ElastiCache: Redis/Memcached, reduce latency, session caching <br> - Database Concepts: OLTP vs OLAP, SQL vs NoSQL, ACID vs BASE, vertical/horizontal scaling, sharding, replication | 12/10/2025 | 12/10/2025 | AWS StudyGroup |
+| 3 | **Install Amazon Q CLI on VMWare** | 13/10/2025 | 13/10/2025 | AWS Docs |
+| 4 | **Research blogs and analyze code** <br> - Read [“Building AI Chatbots using Amazon Lex & Amazon Kendra”](https://aws.amazon.com/vi/solutions/guidance/conversational-chatbots-using-retrieval-augmented-generation-on-aws/) and [“Guidance for Conversational Chatbots Using RAG on AWS”](https://builder.aws.com/content/2eBsTWhvFFPUtzh2secQlNRBgta/prototype-a-rag-chatbot-with-amazon-bedrock-kendra-and-lex) <br> - LangChain Agent + Kendra indexing <br> - Store session data using DynamoDB <br> - RAG with Bedrock | 14/10/2025 | 14/10/2025 | AWS Blogs |
+| 5 | **Attend Workshop:** “Data Science on AWS” <br> - Take notes on data analytics services, and AI/ML services | 15/10/2025 | 15/10/2025 | AWS Event |
+| 6 | **Draft initial architecture diagrams using Amazon Q CLI** | 16/10/2025 | 16/10/2025 | [Pre-Architecture](https://www.notion.so/pre-archi-28fd23b23efb808b978dfb3f9a20389d?v=268d23b23efb8088ba76000ca96674ea)|
+
+---
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained strong understanding of Module 6:
+  * Redshift: OLAP, MPP, columnar storage, suitable for BI & big data analytics.
+  * ElastiCache: Redis/Memcached, caching sessions, offloading DB load, increasing throughput.
+  * Database Concepts: OLTP/OLAP, SQL/NoSQL, ACID vs BASE, scaling strategies.
 
-* Successfully created and configured an AWS Free Tier account.
+* Installed and tested Amazon Q CLI:
+  * Created Q CLI projects
+  * Generated architecture diagrams
+  * Executed basic Q Builder commands
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Conducted deep research on AI chatbot architecture on AWS:
+  * Amazon Lex for conversational interface
+  * Kendra for multi-source data indexing
+  * LangChain agent workflow
+  * DynamoDB for session storage
+  * Bedrock for RAG pipelines
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Attended Data Science on AWS Workshop:
+* Learned full ETL → Transform → Load → ML Training → Deployment pipeline
+* Understood key AWS data and ML services: S3, Glue, Redshift, Athena, SageMaker
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Drafted initial cloud architectures using Amazon Q CLI:
+  * Chatbot architecture
+  * Data pipeline architecture
+  * Basic RAG architecture on AWS

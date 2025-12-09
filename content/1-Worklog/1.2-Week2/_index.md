@@ -1,57 +1,73 @@
 ---
 title: "Week 2 Worklog"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 2 Objectives:
+* Deepen understanding of VPC architecture and its components: Subnet, IGW, NAT Gateway, Route Table, Security Group.  
+* Understand network monitoring and analysis through VPC Flow Logs & Reachability Analyzer.  
+* Deploy EC2 and practice access using Session Manager.  
+* Familiarize with and practice the VPC Site-to-Site model.  
+* Learn the concept of Infrastructure as Code and apply it to AWS infrastructure.  
+* Configure Hybrid DNS using Route 53 Resolver.  
+* Study RDGW – Remote Desktop Gateway in a Hybrid environment.  
+* Practice Transit Gateway and multi-VPC routing.  
+* Study Module 3 theory: EC2, EBS, AMI, Auto Scaling, metadata, pricing options, EFS, FSx, Lightsail, MGN.  
+* Complete labs on AWS Backup, Resource Tagging, and CloudWatch Monitoring.  
+* Deploy the FCJ Management application using Auto Scaling Group.  
+* Practice Lightsail for cost optimization.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+---
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to carry out this week:
 
+| Day | Tasks | Start Date | Completion Date | Reference Material |
+| --- | ----- | ----------- | ---------------- | --------------------- |
+| **Monday** | - Complete Lab 3:<br> &emsp; + VPC, Subnet, Internet Gateway <br> &emsp; + Route Table, Security Group, NAT Gateway <br> - Enable VPC Flow Logs <br> - Deploy EC2 <br> - Practice VPC Site-to-Site <br> - Reachability Analyzer <br> - Session Manager <br> - Deploy CloudWatch Monitoring | 2025-09-15 | 2025-09-15 | https://docs.google.com/document/d/1JWeyNBbld7xkbBnHOszgusOyCnk4IecfjyDEp51FXJk/edit?usp=sharing |
+| **Tuesday** | - Learn Infrastructure as Code <br> - Complete Lab 10: Hybrid DNS with Route 53 Resolver <br> - Study RDGW | 2025-09-16 | 2025-09-16 | Provided document link |
+| **Wednesday** | - Complete Lab 20: Configure Transit Gateway | 2025-09-17 | 2025-09-17 | Provided document link |
+| **Thursday** | - Study Module 3 theory: <br> &emsp; + AMI / Backup / Key Pair <br> &emsp; + Amazon EBS <br> &emsp; + EC2 / Instance Store <br> &emsp; + EC2 User Data & Metadata <br> &emsp; + EC2 Auto Scaling <br> &emsp; + Pricing Options <br> &emsp; + Amazon Lightsail <br> &emsp; + EFS <br> &emsp; + FSx <br> &emsp; + MGN <br> - Complete Lab 13: AWS Backup <br> - Lab 27: Manage resources with Tag & Resource Group | 2025-09-18 | 2025-09-18 | Provided document link |
+| **Friday** | - Complete Lab 8: AWS CloudWatch Workshop <br> - Lab 6: Deploy FCJ Management application using Auto Scaling Group <br> - Lab 45: Lightsail Workshop – Cost Optimization | 2025-09-19 | 2025-09-19 | Provided document link |
+
+---
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Completed all labs on VPC and advanced Networking**, including:  
+  - Creating a fully configured VPC with IGW, NAT Gateway, and custom Route Tables  
+  - Setting up proper Security Groups  
+  - Enabling VPC Flow Logs  
+  - Verifying connectivity using Reachability Analyzer  
 
-* Successfully created and configured an AWS Free Tier account.
+* **Deployed EC2** and practiced modern access techniques:  
+  - SSM Session Manager (no SSH key required)  
+  - CloudWatch Monitoring for CPU, Network, and Log Insights  
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* **Successfully built the VPC Site-to-Site model** and understood cross-network routing.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* **Learned and practiced Infrastructure as Code**, combined with Route 53 Resolver to build Hybrid DNS.
 
-* Used AWS CLI to perform basic operations such as:
+* **Studied RDGW** and understood how to access resources in a Hybrid environment.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* **Completed Transit Gateway lab** with multi-VPC routing.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* **Finished all Module 3 theory topics**:  
+  - AMI, EBS, EC2, Auto Scaling  
+  - Instance Store, Metadata/User Data  
+  - Pricing Options (On-demand, Reserved, Spot)  
+  - Lightsail, EFS, FSx, MGN  
+
+* **Completed Lab 13 – AWS Backup**, building a full data protection solution.
+
+* **Used Tags and Resource Groups** for efficient resource management.
+
+* **Completed CloudWatch Workshop**, created Dashboards, Alarms, and Metric Filters.
+
+* **Deployed FCJ Management application using Auto Scaling Group**, ensuring high availability and automatic scaling.
+
+* **Completed Lightsail Workshop – Cost Optimization**, gaining knowledge on cost-efficient small workloads.
+
+---

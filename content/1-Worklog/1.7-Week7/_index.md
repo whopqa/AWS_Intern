@@ -1,57 +1,66 @@
 ---
 title: "Week 7 Worklog"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Read and analyze AI-related blogs on AWS.
+* Select an architectural baseline from an AWS blog to develop the chatbot.
+* Build the initial project direction for the chatbot.
+* Deploy and test the sample Text-to-SQL Chatbot.
+* Conduct team meeting and summarize optimization strategies (cache, RBAC, scaling, etc.).
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Tasks to carry out this week:
+
+| Day | Tasks | Start Date | Completion Date | Reference Material |
+| --- | ----- | ---------- | ----------- | ----------- |
+| 2 | **Read & review AI blogs** <br> - AWS Knowledge Hub <br> - Summarize AI knowledge & best practices | 20/10/2025 | 20/10/2025 | [AWS Knowledge Hub](https://www.notion.so/268d23b23efb808a8805c570231cefa9?v=268d23b23efb8088ba76000ca96674ea&source=copy_link) |
+| 3 | **Select baseline blog:** <br> - [“Build an AI-powered Text-to-SQL Chatbot”](https://aws.amazon.com/vi/blogs/database/build-an-ai-powered-text-to-sql-chatbot-using-amazon-bedrock-amazon-memorydb-and-amazon-rds/?utm_source=chatgpt.com) <br> - Study code, architecture, workflow <br> - Analyze technologies: Bedrock, Aurora, SQL generation | 21/10/2025 | 21/10/2025 | [AWS Blog](https://aws.amazon.com/vi/blogs/database/build-an-ai-powered-text-to-sql-chatbot-using-amazon-bedrock-amazon-memorydb-and-amazon-rds/?utm_source=chatgpt.com) |
+| 4 | **Create initial chatbot Direction** <br> - Write Direction document on Notion <br> - Define pipeline, roles, architecture, bot limitations <br> - Specify interaction rules | 22/10/2025 | 22/10/2025 | [Direction](https://www.notion.so/Directions-295d23b23efb80bb9500e5cb3222414c?v=268d23b23efb8088ba76000ca96674ea&source=copy_link) |
+| 5 | **Deploy sample blog project:** “Build an AI-powered Text-to-SQL Chatbot” <br> - Run end-to-end tests <br> - Document issues & optimization ideas | 23/10/2025 | 23/10/2025 |[AWS Blog](https://aws.amazon.com/vi/blogs/database/build-an-ai-powered-text-to-sql-chatbot-using-amazon-bedrock-amazon-memorydb-and-amazon-rds/?utm_source=chatgpt.com) |
+| 6 | **Team meeting & notes on Notion** <br> **Meeting agenda includes:** <br> 1. Caching mechanism & bot optimization <br> 2. RBAC access control design <br> 3. Data flow RDS → S3 archive <br> 4. Scaling: RDS, UI, Lex + Translate | 24/10/2025 | 24/10/2025 | [Internal Meeting](https://www.notion.so/NOTE-h-p-298d23b23efb8072a6a3e1f67d5c640a?source=copy_link) |
+
+---
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Reviewed AWS Knowledge Hub:**  
+  - Summarized common AI chatbot workflows.  
+  - Noted key AWS services: Bedrock, RDS, S3, caching layer.
 
-* Successfully created and configured an AWS Free Tier account.
+* **Selected baseline from “Build an AI-powered Text-to-SQL Chatbot”:**  
+  - Understood the Text-to-SQL architecture.  
+  - Captured pipeline: embedding → SQL generation → execution.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* **Completed Direction document on Notion:**  
+  - Defined feature scope.  
+  - Established strategies to prevent incorrect bot actions.  
+  - Designed role-based flow: member / consultant.  
+  - Set safe rules for SELECT/UPDATE/DELETE.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* **Successfully deployed the sample model:**  
+  - Performed real-world testing.  
+  - Documented improvement points.
 
-* Used AWS CLI to perform basic operations such as:
+* **Meeting summary:**
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+  **1. Cache & bot optimization**  
+  - Cache frequent questions to reduce database load.  
+  - Prevent bot from having unrestricted modification permissions.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+  **2. RBAC – Access control & security**  
+  - Bot operates using credentials tied to user role.  
+  - SELECT allowed broadly; UPDATE/DELETE requires strict role & logic checks.
+
+  **3. Data flow & storage**  
+  - Archive RDS data to S3 for analytics and dashboards.
+
+  **4. Scaling**  
+  - RDS: read replicas, Multi-AZ, autoscaling.  
+  - UI scaling.  
+  - Lex + Translate for Vietnamese support (Translate free 2M characters/month in the first year).

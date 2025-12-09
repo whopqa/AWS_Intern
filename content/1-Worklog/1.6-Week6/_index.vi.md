@@ -1,58 +1,58 @@
 ---
 title: "Worklog Tuần 6"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hoàn thành toàn bộ lý thuyết Module 6 (Database Concepts, RDS/Aurora, Redshift, ElastiCache).
+* Nghiên cứu kiến trúc AI chatbot trên AWS.
+* Cài đặt và sử dụng Amazon Q CLI.
+* Tham gia workshop Data Science on AWS.
+* Bắt đầu phác thảo kiến trúc bằng Amazon Q CLI.
+
+---
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2 | **Hoàn thành lý thuyết Module 6** <br> - Redshift: Data warehouse, OLAP, MPP, columnar storage <br> - ElastiCache: Redis/Memcached, giảm latency, session caching <br> - Database Concepts: OLTP vs OLAP, SQL vs NoSQL, ACID vs BASE, vertical/horizontal scaling, sharding, replication | 12/10/2025 | 12/10/2025 | AWS StudyGroup |
+| 3 | **Cài đặt Amazon Q CLI trên VMWare** | 13/10/2025 | 13/10/2025 | AWS Docs |
+| 4 | **Nghiên cứu blog và phân tích code** <br> - Đọc [“Building AI Chatbots using Amazon Lex & Amazon Kendra”](https://aws.amazon.com/vi/solutions/guidance/conversational-chatbots-using-retrieval-augmented-generation-on-aws/) và [“Guidance for Conversational Chatbots Using RAG on AWS”](https://builder.aws.com/content/2eBsTWhvFFPUtzh2secQlNRBgta/prototype-a-rag-chatbot-with-amazon-bedrock-kendra-and-lex) <br> - LangChain Agent + Kendra indexing <br> - Lưu session bằng DynamoDB <br> - RAG with Bedrock | 14/10/2025 | 14/10/2025 | AWS Blogs |
+| 5 | **Tham gia Workshop:** “Data Science on AWS” <br> - Ghi chú các dịch vụ AWS hỗ trợ phân tích dữ liệu và dịch vụ AI/ML | 15/10/2025 | 15/10/2025 | Sự kiện AWS |
+| 6 | **Vẽ sơ bộ kiến trúc bằng Amazon Q CLI** | 16/10/2025 | 16/10/2025 | [Pre-Architecture](https://www.notion.so/pre-archi-28fd23b23efb808b978dfb3f9a20389d?v=268d23b23efb8088ba76000ca96674ea) |
+
+---
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hiểu rõ Module 6:
+  * Redshift: OLAP, MPP, columnar storage, phù hợp BI & big data analytics.
+  * ElastiCache: Redis/Memcached, caching session, giảm tải DB, tăng throughput.
+  * Database Concepts: OLTP/OLAP, SQL/NoSQL, ACID vs BASE, scaling strategies.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Cài đặt và thử nghiệm Amazon Q CLI:
+  * Tạo project
+  * Gọi lệnh generate diagram
+  * Chạy các câu lệnh Q Builder cơ bản
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Nghiên cứu sâu kiến trúc chatbot AI trên AWS:
+  * Lex làm conversational interface
+  * Kendra indexing đa nguồn dữ liệu
+  * LangChain agent workflow
+  * DynamoDB lưu session
+  * Bedrock dùng trong pipeline RAG
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Tham gia Workshop Data Science on AWS:
+* Hiểu quy trình ETL → Transform → Load → ML Training → Deployment
+* Nắm được các dịch vụ: S3, Glue, Redshift, Athena, SageMaker
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Vẽ được sơ bộ các kiến trúc đầu tiên với Amazon Q CLI:
+  * Kiến trúc chatbot
+  * Kiến trúc data pipeline
+  * Kiến trúc RAG cơ bản trên AWS
 

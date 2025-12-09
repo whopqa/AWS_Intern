@@ -1,57 +1,43 @@
 ---
 title: "Week 10 Worklog"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 2
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 10 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Explore CDK and AWS CLI to prepare for infrastructure development.
+* Refine the overall system architecture and renumber all data flows.
+* Assign tasks within the team and define module ownership.
+* Start implementing the core stacks: Text2SQL and Webhook.
+* Research and integrate Facebook Messenger and Cognito authentication.
+
+---
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ----- | ---------- | ---------------- | ------------------ |
+| 2 | - Study AWS CDK and AWS CLI to prepare for infrastructure deployment | 11/10/2025 | 11/10/2025 | AWS Docs |
+| 3 | - Team meeting & task assignment <br> - Refine and finalize the overall system architecture <br> - Renumber all architecture data flows | 11/11/2025 | 11/11/2025 | Internal Architecture Docs |
+| 5 | - Draft infrastructure structure using the CDK model: <br>&emsp; + Stack modules (infrastructure deployment) <br>&emsp; + Service modules (backend logic) <br>&emsp; + Handler modules (event flow handling) <br> - Research deployment workflow for CDK infrastructure | 11/13/2025 | 11/13/2025 | AWS CDK Workshop |
+| 6 | - Take responsibility for the User flow: handling interactions, consultation, appointment booking, and database writes <br> - Research secure & optimized DB operations <br> - Study methods to optimize booking flow <br> - Start implementing Text2SQL Stack & Webhook Stack <br> - **Text2SQL Stack:** Implement Lambda to process queries → convert to SQL → execute on PostgreSQL <br> - **Webhook Stack:** Implement Webhook Verification Lambda, API Gateway GET/POST, IAM Role permissions | 11/14/2025 | 11/14/2025 | Internal |
+| 6 (continued) | - Deploy Messenger App on Facebook Developer <br> - Explore Cognito authentication via Facebook Provider | 11/14/2025 | 11/14/2025 | Facebook Developer, AWS Cognito |
 
+---
 
 ### Week 10 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained solid understanding of CDK and AWS CLI fundamentals for infrastructure deployment.
+* Completed refinement of the overall system architecture and renumbered all data flows clearly.
+* Structured the infrastructure into three major module groups:
+  * **Stack** – Deploy CDK resources (Lambda, API Gateway, RDS, IAM, …)
+  * **Service** – Backend logic processing
+  * **Handler** – Event/Lambda flow processing
+* Began implementation of core system components:
+  * **Text2SQL Stack** – Lambda for query → SQL transformation → execute on PostgreSQL
+  * **Webhook Stack** – Lambda for Webhook/Facebook Signature verification, API Gateway GET/POST, IAM Role setup
+* Redesigned the User flow: consultation, booking, safe & optimized DB operations.
+* Researched methods to optimize booking scheduling and avoid conflicts.
+* Deployed Facebook Messenger App and experimented with Cognito authentication via Facebook Provider.
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...

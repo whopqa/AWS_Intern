@@ -1,57 +1,61 @@
 ---
 title: "Week 1 Worklog"
-date: "`r Sys.Date()`"
+date: 2025-09-10
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
+* Get familiar with members of the First Cloud Journey (FCJ) program and understand the rules and regulations at the internship unit.
+* Understand basic concepts of cloud computing and the AWS service ecosystem (Compute, Storage, Networking, Database, Security…).
+* Practice creating and managing an AWS Free Tier account following best practices: IAM User, Group, Role; avoid using the root account; set up Budgets for cost monitoring.
+* Become familiar with the AWS Management Console and AWS CLI to interact with resources, along with introduction to scripting for automation.
+* Understand cost optimization mechanisms: Spot Instances, AWS Pricing Calculator, Budget/Cost Budget.
+* Get familiar with Serverless concepts and the Hugo tool for deploying workshops/static websites.
+* Understand and practice basic AWS networking: VPC, Subnet, Route Table, Security Group, ...
+* Understand basic networking concepts: CIDR, IP Address, Port, Protocol…
+* Understand VPC Security, VPN, Direct Connect, Load Balancer…
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
-
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+### Tasks to carry out this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------------- |
+| 2   | - Complete Module 1 theory content. <br> - Learn to create workshops using Hugo: <br>&emsp; + Download and set up Hugo <br>&emsp; + Learn how to create weekly worklogs | 8/9/2025 | 8/9/2025 | https://www.notion.so/WEEK-1-269fd6be9818815f8e4bf7180ff107c8?source=copy_link |
+| 3   | - Study foundational computer networking concepts: <br>&emsp; + CIDR <br>&emsp; + IP Address <br>&emsp; + Port Number <br>&emsp; + Protocol | 9/9/2025 | 9/9/2025 | Networking documents + AWS Academy |
+| 4   | - Complete labs 1, 7, 9 of Module 1: AWS overview, AWS infrastructure, AWS policies, AWS Services, budget-based cost optimization. | 10/9/2025 | 10/9/2025 | https://www.notion.so/WEEK-1-269fd6be9818815f8e4bf7180ff107c8?source=copy_link |
+| 5   | - Learn basic VPC concepts: <br>&emsp; + VPC <br>&emsp; + Security Group <br>&emsp; + NACL <br>&emsp; + VPC Flow Logs <br>&emsp; + VPC Peering <br>&emsp; + Transit Gateway <br>&emsp; + VPC Endpoint | 11/9/2025 | 11/9/2025 | https://www.notion.so/WEEK-1-269fd6be9818815f8e4bf7180ff107c8?source=copy_link |
+| 6   | - Study on-premise to AWS connectivity: <br>&emsp; + Site-to-Site VPN <br>&emsp; + Client VPN <br>&emsp; + AWS Direct Connect <br> - Learn Elastic Load Balancing and traffic distribution mechanisms | 12/9/2025 | 12/9/2025 | https://www.notion.so/WEEK-1-269fd6be9818815f8e4bf7180ff107c8?source=copy_link|
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed Module 1 theory and clearly understood:
+  * Cloud Computing models
+  * AWS service groups: Compute, Storage, Networking, Database…
 
-* Successfully created and configured an AWS Free Tier account.
+* Became familiar with Hugo:
+  * Successfully downloaded and installed Hugo
+  * Created and managed weekly worklogs using Hugo
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Gained solid fundamental networking knowledge:
+  * CIDR, IP Address
+  * Port number, Protocol
+  * Network segmentation & how IP addressing works
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Completed AWS Module 1 labs:
+  * AWS Global Infrastructure
+  * AWS Services and security policies
+  * Cost optimization using AWS Budget & contacting support
 
-* Used AWS CLI to perform basic operations such as:
+* Understood basic VPC concepts:
+  * Security Group (instance-level security)
+  * NACL (subnet-level security)
+  * Flow Logs, Peering, Endpoint, Transit Gateway
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Understood on-premise to AWS connectivity:
+  * Site-to-Site VPN
+  * Client VPN
+  * Direct Connect
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Learned Elastic Load Balancing and how load distribution works.
+
+* Built a solid foundational knowledge base to prepare for the next week focusing on EC2, CLI, and advanced networking.
