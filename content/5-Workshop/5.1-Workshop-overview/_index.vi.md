@@ -29,7 +29,7 @@ Hệ thống được thiết kế theo mô hình **Event-Driven Serverless** k�
     * Text2SQL Handler: Chuyển đổi câu hỏi tự nhiên thành truy vấn SQL an toàn để lấy dữ liệu.
 5.  **Admin Dashboard & Consultant Portal:** Giao diện quản trị (ReactJS) được host trên Amazon S3 và phân phối qua CloudFront, cho phép quản trị viên xem thống kê và quản lý lịch. Consultant Portal cung cấp khả năng quản lý lịch được book với khách hàng và xem lịch hẹn cá nhân.
 
-![Architecture Diagram](/images/2-Proposal/chatbot_final_final_final.drawio.png)
+![Architecture Diagram](/images/2-Proposal/chatbot.jpg)
 *(Hình ảnh minh họa kiến trúc tổng quan từ Proposal)*
 
 #### Key Technologies
