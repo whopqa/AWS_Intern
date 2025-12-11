@@ -8,7 +8,7 @@ pre: " <b> 3. </b> "
 
 
 
-###  [Blog 1 -  Improving Accuracy for Your Cloud Budgeting with New Features in AWS Budgets](3.1-Blog1/)
+###  [Blog 1 -  Cải thiện độ chính xác cho ngân sách đám mây của bạn với các tính năng mới trong AWS Budgets](3.1-Blog1/)
 Blog này giới thiệu các tính năng mới của AWS Budgets giúp bạn kiểm soát và theo dõi chi phí AWS chính xác hơn. Các cải tiến bao gồm hỗ trợ thêm các chỉ số chi phí (net unblended, net amortized), khả năng loại trừ các chiều cụ thể khi tạo ngân sách, bộ lọc chi tiết cho các loại phí, và API mới hỗ trợ filter expression tương thích với AWS Cost Explorer. Bài viết hướng dẫn cách sử dụng các tính năng này trong console và qua CLI, đồng thời đưa ra các thực hành tốt nhất để quản lý ngân sách đám mây hiệu quả hơn.
 ###  [Blog 2 - Tăng tương tác với nội dung bản địa hóa bằng Amazon Bedrock Flows](3.2-Blog2/)
 Blog này hướng dẫn cách sử dụng Amazon Bedrock Flows, Prompt Management và các mô hình AI nền tảng để tự động hóa quy trình bản địa hóa nội dung cho các thị trường mới. Bài viết trình bày cách xây dựng workflow không cần mã để bản địa hóa bài viết, kiểm tra chất lượng bản địa hóa, đánh giá các chỉ số như độ chính xác, độ dài, phương ngữ và ý nghĩa, đồng thời giúp biên tập viên dễ dàng kiểm soát và xuất bản nội dung phù hợp với từng thị trường. Ngoài ra, blog còn hướng dẫn cách cấu hình, kiểm thử flow, và lưu ý về chi phí sử dụng dịch vụ.
